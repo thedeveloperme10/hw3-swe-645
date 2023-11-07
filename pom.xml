@@ -59,6 +59,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>swe-645-cicd-hw3</finalName>
 	</build>
 
 </project>

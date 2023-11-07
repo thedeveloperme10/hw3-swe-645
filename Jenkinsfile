@@ -13,7 +13,7 @@ pipeline{
         stage("Build Docker Image"){
             steps{
                 script{
-                    sh 'docker build -t vsomasun/swe-642-cicd .'
+                    sh 'docker build -t vsomasun/swe-645-cicd-hw3 .'
                 }
             }
         }
@@ -22,7 +22,7 @@ pipeline{
                 script{
                     withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
                         sh 'docker login -u vsomasun -p ${dockerhubpwd}'
-                        sh 'docker push vsomasun/swe-642-cicd'
+                        sh 'docker push vsomasun/swe-645-cicd-hw3'
                     }
                 }
             }
@@ -31,7 +31,7 @@ pipeline{
             steps{
                 script{
                     env.KUBECONFIG = '/home/ubuntu/.kube/config'
-                    sh("kubectl --kubeconfig=${env.KUBECONFIG} set image deployment/swe-645-hw2 container-0=vsomasun/swe-642-cicd -n default")
+                    sh("kubectl --kubeconfig=${env.KUBECONFIG} set image deployment/swe-645-cicd-hw3 container-0=vsomasun/swe-645-cicd-hw3-n default")
                 }
             }
         }

@@ -2,7 +2,7 @@
 FROM tomcat:latest
 
 # Copy the WAR file into the webapps directory of Tomcat
-COPY target/hw3-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/
+COPY target/swe-645-cicd-hw3.war /usr/local/tomcat/webapps/
 
 # Expose port 8080 (the default Tomcat port)
 EXPOSE 8080
