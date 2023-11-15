@@ -9,9 +9,14 @@
 #
 ## Start Tomcat when the container starts
 #CMD ["catalina.sh", "run"]
-FROM adoptopenjdk/openjdk11:jdk-11.0.2.9-slim
-WORKDIR /opt
-ENV PORT 8080
+#FROM adoptopenjdk/openjdk11:jdk-11.0.2.9-slim
+#WORKDIR /opt
+#ENV PORT 8080
+#EXPOSE 8080
+#COPY target/*.jar /opt/app.jar
+#ENTRYPOINT exec java $JAVA_OPTS -jar app.jar
+
+FROM openjdk:8
 EXPOSE 8080
-COPY target/*.jar /opt/app.jar
-ENTRYPOINT exec java $JAVA_OPTS -jar app.jar
+ADD target/swe-645-cicd-hw3.jar swe-645-cicd-hw3.jar
+ENTRYPOINT["java", "-jar", "/swe-645-cicd-hw3.jar"]
